@@ -1,0 +1,67 @@
+// ViewBag Controller ⬇⬇⬇⬇⬇⬇
+
+using MVC1.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MVC1.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            ViewBag.id = 21;
+            ViewBag.Name = "Vandana";
+            ViewBag.Address = "Noida";
+            ViewBag.Rollno = 23;
+            ViewBag.mobile =0123456789 ;
+
+            string[] color = { "Red", "white", "yellow", "Green" };
+
+            ViewBag.array = color;
+
+            
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            Home obj = new Home();
+
+            return View(obj);
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}
+
+
+// ViewBag View ⬇⬇⬇⬇⬇⬇
+
+@{
+    ViewBag.Title = "Home Page";
+
+}
+<p>This is my id : @ViewBag.id</p>
+<p>This is my Name : @ViewBag.Name</p>
+<p>This is my Address : @ViewBag.Address</p>
+<p>This is my Rollno : @ViewBag.rollno</p>
+<ul>
+    @{ 
+        foreach(string item in ViewBag.array)
+            {
+                <li>
+                    @item
+                </li>
+            }
+    }
+</ul>
+

@@ -1,0 +1,77 @@
+     //ViewData Controller
+
+using MVC1.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MVC1.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            ViewData["id"] = 23;
+            ViewData["Name"] = "Vandana";
+            ViewData["Address"] = "Noida";
+            ViewData["Company"] = "Chetu";
+
+            ViewData["AnimalName"] = new List<string>()
+
+            {
+                "Dog",   "Lion","Cat","Monkey"
+                
+
+            };
+
+           
+            return View();
+          }
+
+        public ActionResult About()
+
+        {
+            
+         return View();
+        }
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}
+
+
+  		//ViewData View
+
+@{
+    ViewBag.Title = "Home Page";
+
+}
+
+
+
+<p>This is my id:  @ViewData["id"]</p>
+<p>This is my Name:  @ViewData["Name"]</p>
+<p>This is my Address:  @ViewData["Address"]</p>
+<p>The Company name is:  @ViewData["Company"]</p>
+
+<ul>
+    @{
+        foreach (string i in (List<string>)ViewData["AnimalName"])
+            
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
+
+
+
+
+
+			

@@ -1,0 +1,74 @@
+		//Home Controller
+
+
+using MVC1.Models;
+using System;
+using System.Collections.Generic;
+
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MVC1.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            
+            TempData["Id2"] = 23;
+            TempData["Name"] = "Naina";
+            TempData["Address"] = "Delhi";
+            TempData["Company"] = "google";
+
+            TempData["Car"] = new List<string>()
+
+            {
+                "BMW","Shift","Honda","TATA"
+            };
+
+           
+
+            return View();
+          }
+
+        public ActionResult About()
+
+        {
+            
+        return View();
+        }
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}
+
+
+		//TempData View
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<h2>This is TempData</h2>
+
+<p>@TempData["Id2"]</p>
+
+
+<p>@TempData["Name"]</p>
+<p>@TempData["Address"]</p>
+<p>@TempData["Company"]</p>
+
+<ul>
+        @{
+            foreach (string i in (List<string>)TempData["Car"])
+            {
+                <li>@i</li>
+            }
+        }
+    </ul>
+
